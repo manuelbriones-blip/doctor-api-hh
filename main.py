@@ -1,8 +1,9 @@
-from fastapi import FastAPI
-from bs4 import BeautifulSoup
-import requests
-import unicodedata
-import re
+from fastapi import FastAPI                                                                                           
+  from bs4 import BeautifulSoup
+  import requests                                                                                                       
+  import unicodedata
+  import re
+  import os
 
   app = FastAPI()
 
@@ -57,3 +58,7 @@ import re
           "perfil": perfil,
           "otras_coincidencias": [d["nombre"] for d in resultados[1:5]],
       }
+
+  if __name__ == "__main__":
+      import uvicorn
+      uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
